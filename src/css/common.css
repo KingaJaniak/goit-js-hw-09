@@ -16,3 +16,57 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.value{
+  text-shadow: 1px 1px pink;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.label{
+  font-weight: 500;
+}
+.shadow{
+  max-width: 300px;
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  border: solid 2px #212121;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px pink;
+}
+button{
+  width: 100px;
+  height: 20px;
+  background: pink;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px lightgray;
+  border:none;
+  color: black;
+}
+button:hover{
+  cursor: pointer;
+  background-color: lightgray;
+  box-shadow: 5px 5px 5px pink;
+  border: none;
+}
+a{
+  color: black;
+  text-shadow: 5px 5px 5px lightgray;
+  font-size: 20px;
+  text-decoration: none;
+}
+a:hover{
+  text-shadow: 5px 5px 5px pink;
+  cursor: pointer;
+}
