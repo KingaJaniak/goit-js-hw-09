@@ -47,7 +47,7 @@ img {
 }
 button{
   width: 100px;
-  height: 20px;
+  height: 30px;
   background: pink;
   border-radius: 10px;
   box-shadow: 5px 5px 5px lightgray;
@@ -60,6 +60,10 @@ button:hover{
   box-shadow: 5px 5px 5px pink;
   border: none;
 }
+.submit{
+  width: 100px;
+  height: 40px;
+}
 a{
   color: black;
   text-shadow: 5px 5px 5px lightgray;
@@ -69,4 +73,10 @@ a{
 a:hover{
   text-shadow: 5px 5px 5px pink;
   cursor: pointer;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
