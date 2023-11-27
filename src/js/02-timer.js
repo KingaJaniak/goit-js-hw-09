@@ -2,6 +2,7 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
 let differenceTime;
+let intervalCount;
 const currentTime = new Date();
 
 const options = {
