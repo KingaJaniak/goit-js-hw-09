@@ -4,17 +4,18 @@ let amount;
 function createPromise(position, delay) {
   return new Promise ((resolve, reject) => {
   const shouldResolve = Math.random() > 0.3;
+  setTimeout(()=>{
   if (shouldResolve) {
-      setTimeout(()=>{
         Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
         resolve();
-      },delay);
+      
     // Fulfill
   } else {
     return Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
     reject({position, delay});
     // Reject
   }
+},delay);
 });
 };
 document.querySelector("form").addEventListener("submit", function (event) {

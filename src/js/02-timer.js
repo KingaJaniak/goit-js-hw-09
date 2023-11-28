@@ -4,6 +4,7 @@ import 'flatpickr/dist/flatpickr.min.css';
 let differenceTime;
 let intervalCount;
 const currentTime = new Date();
+let countdown = false; 
 
 const options = {
   enableTime: true,
@@ -12,7 +13,6 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     handleDate(selectedDates[0]);
-    startBtn.disabled = selectedDates[0] < currentTime;
   },
 };
 
@@ -26,6 +26,13 @@ const countedElem = {
   minutes: document.querySelector('[data-minutes]'),
   seconds: document.querySelector('[data-seconds]'),
 };
+
+startBtn.addEventListener('click', () => {
+  if (countdown) return; 
+  countdown = true;
+  startBtn.disabled = true;
+  intervalCount = setInterval(update, 1000);
+});
 
 // Define the update function before using it
 function update() {
@@ -44,8 +51,16 @@ function update() {
 
   if (differenceTime <= 0) {
     clearInterval(intervalCount);
+    countdown = false;
+    startBtn.disabled = false;
   } else {
     differenceTime -= 1000;
+    //stopped when is 00:00:00
+    if (differenceTime <= 0) {
+      clearInterval(intervalCount);
+      countdown = false;
+      startBtn.disabled = false;
+    }
   }
 }
 
@@ -54,9 +69,9 @@ function handleDate(selectedDate) {
   if (differenceTime < 0) {
     window.alert("Please choose a date in the future");
     startBtn.disabled = true;
+    clearInterval(intervalCount);
   } else {
     startBtn.disabled = false;
-    intervalCount = setInterval(update, 1000);
   }
 }
 
@@ -77,6 +92,7 @@ function convertMs(ms) {
 function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
 }
+
 console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
 console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
 console.log(convertMs(24140000)); // {days: 0, hours: 6, minutes: 42, seconds: 20}
